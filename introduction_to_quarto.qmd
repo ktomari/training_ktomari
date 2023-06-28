@@ -1,0 +1,16 @@
+---
+title: "Introduction to Quarto"
+format: html
+editor: visual
+---
+
+# Intro
+
+There's a [link][search].
+
+[search]: https://www.duckduckgo.com
+
+```{r}
+
+```
+
