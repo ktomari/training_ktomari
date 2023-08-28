@@ -3,4 +3,6 @@ title: "Github Pages Practice"
 format: html
 ---
 
-Test
+# Introduction
+
+This is a test.
