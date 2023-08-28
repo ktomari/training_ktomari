@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Literate Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="literate_analysis_files/libs/clipboard/clipboard.min.js"></script>
+<script src="literate_analysis_files/libs/quarto-html/quarto.js"></script>
+<script src="literate_analysis_files/libs/quarto-html/popper.min.js"></script>
+<script src="literate_analysis_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="literate_analysis_files/libs/quarto-html/anchor.min.js"></script>
+<link href="literate_analysis_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="literate_analysis_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="literate_analysis_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="literate_analysis_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="literate_analysis_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Literate Analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="intro" class="level2">
+<h2 class="anchored" data-anchor-id="intro">Intro</h2>
+<section id="about-this-data" class="level3">
+<h3 class="anchored" data-anchor-id="about-this-data">About this data</h3>
+<p><a href="https://arcticdata.io/catalog/view/doi:10.18739/A25T3FZ8X">Abstract:</a> <span class="citation" data-cites="universityoftexasatelpaso2018">(<a href="#ref-universityoftexasatelpaso2018" role="doc-biblioref">University Of Texas At El Paso 2018</a>)</span></p>
+<blockquote class="blockquote">
+<p><strong>This data set contains North Pole Environmental Observatory Bottle Chemistry data. This data set includes diverse measurements of seawater chemistry along with supporting conductivity, temperature, and depth (CTD) data from the Arctic Ocean near the North Pole.</strong> Measurements were taken from sea ice platforms each April or May from 2000-2014. Investigators used a CTD-O2 system to measure seawater conductivity, temperature, depth, and dissolved oxygen content, and collected Niskin bottle samples for measurements of salinity, oxygen isotopes composition, total alkalinity, and concentrations of phosphate, silicic acid, nitrate, nitrite, ammonium, and barium. The available in-situ dissolved oxygen measurements were collected beginning in 2002. Beginning with the 2007 deployment, an in-situ ultraviolet spectrophotometer (ISUS) was used to measure nitrate concentrations in the water column. The North Pole Environmental Observatory (NPEO) is a year-round, scientific observatory, deploying various instruments each April in order to learn how the world’s northernmost sea helps regulate global climate. Supported by repeat hydrographic profiles, it includes a set of unmanned scientific platforms that record oceanographic, cryospheric, and atmospheric data throughout the year. More information about the project is available at the project web site: http://psc.apl.washington.edu/northpole.</p>
+</blockquote>
+</section>
+<section id="setup" class="level3">
+<h3 class="anchored" data-anchor-id="setup">Setup</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="read-data" class="level3">
+<h3 class="anchored" data-anchor-id="read-data">Read data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A35ad7624-b159-4e29-a700-0c0770419941"</span>, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="st">"bgchem2008data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>bgchem <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"bgchem2008data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Exploring data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>bgchem <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 19
+  Date       Time                Station Latit…¹ Longi…² Targe…³ CTD_D…⁴ CTD_S…⁵
+  &lt;date&gt;     &lt;dttm&gt;              &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 2008-03-21 1899-12-31 21:56:46 73N,14…    73.0   -140.      20    15.1    26.1
+2 2008-03-21 1899-12-31 21:56:46 73N,14…    73.0   -140.      60    60.6    29.2
+3 2008-03-21 1899-12-31 21:56:46 73N,14…    73.0   -140.      85    85.7    31.4
+4 2008-03-21 1899-12-31 21:56:46 73N,14…    73.0   -140.     190   191.     33.1
+5 2008-03-21 1899-12-31 21:56:46 73N,14…    73.0   -140.     310   309.     34.6
+6 2008-03-22 1899-12-31 21:45:27 72N,14…    72.1   -140.      20    21.0    26.2
+# … with 11 more variables: CTD_Temperature &lt;dbl&gt;, Bottle_Salinity &lt;dbl&gt;,
+#   d18O &lt;dbl&gt;, Ba &lt;dbl&gt;, Si &lt;dbl&gt;, NO3 &lt;dbl&gt;, NO2 &lt;dbl&gt;, NH4 &lt;dbl&gt;, P &lt;dbl&gt;,
+#   TA &lt;dbl&gt;, O2 &lt;dbl&gt;, and abbreviated variable names ¹​Latitude, ²​Longitude,
+#   ³​Target_Depth, ⁴​CTD_Depth, ⁵​CTD_Salinity</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(bgchem)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 70
+Columns: 19
+$ Date            &lt;date&gt; 2008-03-21, 2008-03-21, 2008-03-21, 2008-03-21, 2008-…
+$ Time            &lt;dttm&gt; 1899-12-31 21:56:46, 1899-12-31 21:56:46, 1899-12-31 …
+$ Station         &lt;chr&gt; "73N,140W", "73N,140W", "73N,140W", "73N,140W", "73N,1…
+$ Latitude        &lt;dbl&gt; 73.02083, 73.02083, 73.02083, 73.02083, 73.02083, 72.0…
+$ Longitude       &lt;dbl&gt; -139.8885, -139.8885, -139.8885, -139.8885, -139.8885,…
+$ Target_Depth    &lt;dbl&gt; 20, 60, 85, 190, 310, 20, 60, 85, 190, 310, 430, 20, 6…
+$ CTD_Depth       &lt;dbl&gt; 15.1270, 60.5559, 85.7471, 191.4073, 309.2524, 20.9588…
+$ CTD_Salinity    &lt;dbl&gt; 26.0658, 29.1798, 31.4023, 33.1268, 34.6233, 26.1788, …
+$ CTD_Temperature &lt;dbl&gt; -1.42300, -0.93431, -0.14583, -1.47750, 0.25782, -1.40…
+$ Bottle_Salinity &lt;dbl&gt; 26.06580, 29.17980, 31.40230, 33.12680, 34.62330, 26.1…
+$ d18O            &lt;dbl&gt; -3.53176972, -3.18565098, -2.10872671, -1.42934554, 0.…
+$ Ba              &lt;dbl&gt; 72.40000, 82.84798, 60.55257, 76.13382, -99.00000, 70.…
+$ Si              &lt;dbl&gt; 2.45990, 2.82420, 7.54360, 36.57680, 8.06340, 2.78200,…
+$ NO3             &lt;dbl&gt; -0.0311, 0.0260, 2.6964, 15.8538, 12.1601, 0.0480, 0.3…
+$ NO2             &lt;dbl&gt; 0.05620, 0.17255, 0.02170, 0.02460, -0.00130, 0.04820,…
+$ NH4             &lt;dbl&gt; 0.19740, 0.05575, 0.06910, 0.05910, 0.06530, 0.37390, …
+$ P               &lt;dbl&gt; 0.59340, 0.73175, 1.02980, 1.87450, 0.87670, 0.59190, …
+$ TA              &lt;dbl&gt; 1895.20, 2094.50, 2194.20, 2268.40, 2296.50, 1902.90, …
+$ O2              &lt;dbl&gt; 9.2460, -99.0000, -99.0000, -99.0000, 6.6560, 9.1860, …</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="analysis" class="level2">
+<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+<section id="calc-summary-stats" class="level3">
+<h3 class="anchored" data-anchor-id="calc-summary-stats">Calc summary stats</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>bgchem <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(NO3, NO2, NH4, P) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      NO3               NO2                NH4                P         
+ Min.   :-0.0499   Min.   :-0.00130   Min.   :0.00535   Min.   :0.5732  
+ 1st Qu.: 0.7849   1st Qu.: 0.01285   1st Qu.:0.01603   1st Qu.:0.7986  
+ Median : 4.7488   Median : 0.02475   Median :0.03465   Median :0.9725  
+ Mean   : 6.8571   Mean   : 0.04766   Mean   :0.05853   Mean   :1.1201  
+ 3rd Qu.:13.0425   3rd Qu.: 0.04469   3rd Qu.:0.06747   3rd Qu.:1.4956  
+ Max.   :15.8538   Max.   : 0.27300   Max.   :0.37390   Max.   :1.8745  </code></pre>
+</div>
+</div>
+</section>
+<section id="calc-mean-redfield-ratio" class="level3">
+<h3 class="anchored" data-anchor-id="calc-mean-redfield-ratio">Calc mean redfield ratio</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get mean of each of these columns (of molecules in redfield ratio)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> bgchem <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(NO3, NO2, NH4, P) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(., mean)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>ratio <span class="ot">&lt;-</span> (means<span class="sc">$</span>NO3 <span class="sc">+</span> means<span class="sc">$</span>NO2 <span class="sc">+</span> means<span class="sc">$</span>NH4)<span class="sc">/</span>means<span class="sc">$</span>P</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plot-redfield-ratio" class="level3">
+<h3 class="anchored" data-anchor-id="plot-redfield-ratio">plot redfield ratio</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bgchem<span class="sc">$</span>P, bgchem<span class="sc">$</span>NO3 <span class="sc">+</span> bgchem<span class="sc">$</span>NO2 <span class="sc">+</span> bgchem<span class="sc">$</span>NH4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="literate_analysis_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The value is 6</p>
+</section>
+<section id="references" class="level2 unnumbered">
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-universityoftexasatelpaso2018" class="csl-entry" role="doc-biblioentry">
+University Of Texas At El Paso. 2018. <span>“North Pole Environmental Observatory Bottle Chemistry.”</span> Arctic Data Center. <a href="https://doi.org/10.18739/A25T3FZ8X">https://doi.org/10.18739/A25T3FZ8X</a>.
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

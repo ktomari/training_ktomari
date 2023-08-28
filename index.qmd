@@ -1,8 +1,9 @@
 ---
-title: "Github Pages Practice"
+title: "R Workshop"
 format: html
 ---
 
-# Introduction
-
-This is a test.
+- [Intro to Quarto](introduction_to_quarto.html)
+- Cleaning and Wrangling Data
+- Data Vis
+- Spatial Data in R
